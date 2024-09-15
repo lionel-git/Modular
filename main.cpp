@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdint>
 
 #ifdef _WIN32
 uint64_t modular_mult(uint64_t a, uint64_t b, uint64_t n)
