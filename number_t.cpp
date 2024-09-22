@@ -12,6 +12,8 @@ std::uniform_int_distribution<int64_t> number_t::distrib_;
 void 
 number_t::init_modulo(int64_t modulo, unsigned int seed)
 {
+    if (modulo <= 0)
+        throw std::runtime_error("modulo should be positive");
     modulo_ = modulo;
     number_t::generator_.seed(seed);
     number_t::distrib_ = std::uniform_int_distribution<int64_t>(0, modulo - 1);
@@ -75,6 +77,11 @@ number_t::operator-(const number_t& other) const
 {
     uint64_t result = (uint64_t)value_ + (uint64_t)(modulo_- other.value_);
     return number_t(result % modulo_);
+}
+
+number_t number_t::operator-() const
+{
+    return number_t(modulo_ - value_);
 }
 
 number_t 

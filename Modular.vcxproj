@@ -129,11 +129,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="elliptic_curve.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="number_t.cpp" />
+    <ClCompile Include="point_t.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="elliptic_curve.h" />
     <ClInclude Include="number_t.h" />
+    <ClInclude Include="point_t.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

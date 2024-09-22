@@ -18,7 +18,7 @@ public:
     number_t operator-(const number_t& other) const;
     number_t operator*(const number_t& other) const;
     number_t operator/(const number_t& other) const;
-
+    number_t operator-() const;
 
     bool operator==(const number_t& other) const { return value_ == other.value_; }
     bool operator!=(const number_t& other) const { return value_ != other.value_; }

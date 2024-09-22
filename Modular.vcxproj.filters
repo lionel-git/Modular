@@ -21,9 +21,21 @@
     <ClCompile Include="number_t.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="elliptic_curve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="point_t.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="number_t.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="elliptic_curve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="point_t.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
