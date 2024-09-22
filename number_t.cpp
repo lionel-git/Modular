@@ -28,7 +28,8 @@ number_t::modular_mult(int64_t a, int64_t b)
     return remainder;
 }
 #else
-int64_t modular_mult(int64_t a, int64_t b)
+int64_t
+number_t::modular_mult(int64_t a, int64_t b)
 {
     return (int64_t)(((__uint128_t)a * (__uint128_t)b) % number_t::modulo_);
 }
