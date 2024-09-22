@@ -1,0 +1,43 @@
+=====================================================================
+On definit la courbe par
+y^2 = x^3 + ax + b
+
+si on a 2 points P et Q sur la courbe
+
+on considere la droite passant par P et Q et on note R le point d'intersection de cette droite avec la courbe
+
+s = (yQ - yP) / (xQ - xP) est la pente de la droite passant par P et Q
+
+y = s.x + t
+si on injecte dans l'equation de la courbe on obtient   
+
+(s.x+t)^2 = x^3 + ax + b
+s^2.x^2 + 2st.x + t^2 = x^3 + ax + b
+donc:
+x^3 - s^2.x^2 + (a-2st).x + b - t^2 = 0
+
+or (x-a)(x-b)(x-c) = x^3 - (a+b+c).x^2 + (ab+bc+ac).x - abc
+
+donc on a: 
+s^2 = a+b+c
+
+xP+ xQ + xR = s^2
+xR = s^2 - xP - xQ (a)
+
+et
+(yR - yP) / (xR - xP) = s
+
+donc
+yR = s.(xR - xP) + yP (b)
+on prend l'oppose de (b) pour obtenir   
+yR' = -s.(xR - xP) - yP = - yP + s.(xP - xR) (c)
+
+=====================================================================
+Si on veut doubler un point
+on remplace juste s par l'equation de la tangente en P
+
+Si on diferencie l'equation de la courbe on obtient
+2y.dy = 3x^2.dx + a.dx
+dy/dx = (3x^2 + a) / 2y
+s = (3.xP^2 + a) / 2.yP
+
