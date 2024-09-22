@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdint>
+#include <cstdlib>
+#include <random>
 
 #ifdef _WIN32
 uint64_t modular_mult(uint64_t a, uint64_t b, uint64_t n)
@@ -28,15 +30,13 @@ uint64_t get_inverse(int64_t b, int64_t modulo)
 
     while (r1 != 0)
     {
-        int64_t q = r0 / r1;
-        int64_t r2 = r0 - q * r1;
-        int64_t s2 = s0 - q * s1;
-        int64_t t2 = t0 - q * t1;
-
+        auto qr = std::div(r0, r1);
         r0 = r1;
-        r1 = r2;
+        r1 = qr.rem;
+        int64_t s2 = s0 - qr.quot * s1;
         s0 = s1;
         s1 = s2;
+        int64_t t2 = t0 - qr.quot * t1; 
         t0 = t1;
         t1 = t2;
     }
@@ -58,7 +58,23 @@ void check_inverse(int64_t a, int64_t modulo)
         throw std::runtime_error("inverse is not correct");
 }
 
-int main(int argc, char* argv[]) 
+void check_inverses(int64_t modulo, int N)
+{
+    std::mt19937 generator(1234);
+    std::uniform_int_distribution<int64_t> distrib(0, modulo - 1);
+
+    std::cout << "min: " << distrib.min() << std::endl;
+    std::cout << "max: " << distrib.max() << std::endl;
+
+    for (int i = 0; i < N; ++i)
+    {
+        int64_t a = distrib(generator);
+        check_inverse(a, modulo);
+    }
+    std::cout << "Test passed" << std::endl;
+}
+
+void test0()
 {
     int64_t m = 9223372036854775783ll;
     int64_t a = 7345678901234567890ll % m;
@@ -66,8 +82,12 @@ int main(int argc, char* argv[])
     int64_t result = modular_mult(a, b, m);
     std::cout << "Result: " << result << std::endl;
 
-    check_inverse(a, m);
-    check_inverse(b, m);
+    check_inverses(m, 10000);
+}
+
+int main(int argc, char* argv[]) 
+{
+    test0();
     return 0;
 }
 
